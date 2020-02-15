@@ -1,0 +1,10 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form asp-page-handler="GetPosters" method="post">
+    <input type="text" name="search" />
+    <input type="submit" value="Search" />
+</form>
