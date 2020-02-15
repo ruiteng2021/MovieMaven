@@ -1,0 +1,83 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#searchDiv {
+    margin: 15px 0;
+}
+#searchForm > input[type='submit'] {
+    width: 100%;
+    margin-top: 2px;
+}
+.thumbs {
+    width: 250px;
+    min-height: 360px;
+    margin: 13px;
+    border: 1px solid #333;
+    border-radius: 12px;
+    float: left;
+}
+.link {
+    width: 250px;
+    min-height: 360px;
+    opacity: 0;
+}
+
+#videos {
+    text-align: center;
+}
+.youtubeVids {
+    margin: 10px 7px;
+    border-radius: 8px;
+}
+#movieDetails {
+    font-size: 1.6em;
+}
+#movieDetails > h3 {
+    background: #ccc;
+    color: #00f;
+    font-weight: 700;
+    padding: 13px;
+    border-radius: 4px;
+    margin-bottom: 0;
+}
+#movieDetails > h2 {
+    background: #e5e5e5;
+    color: #333;
+    font-weight: 900;
+    padding: 13px;
+    font-size: 1.1em;
+    border-radius: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#movieDetails > p {
+    padding: 25px;
+    background: #999;
+    color: #fff;
+    margin-top: 0;
+    border-radius: 4px;
+}
+.castPic {
+    width: 250px;
+    height: 250px;
+    border: 4px solid #333;
+    border-radius: 50%;
+    margin: 13px;
+    float: left;
+}
+footer {
+    display: block;
+    clear: both;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* for later */
+}
