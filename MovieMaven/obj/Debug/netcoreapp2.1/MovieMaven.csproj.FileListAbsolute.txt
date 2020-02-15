@@ -65,3 +65,4 @@ D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.Views.pd
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.dll
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.pdb
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.csproj.CopyComplete
+D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.csprojAssemblyReference.cache

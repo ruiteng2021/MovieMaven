@@ -4,6 +4,11 @@
     ViewData["Title"] = "Home page";
 }
 
+    <div id="hero-image-wrapper">
+        <iframe id="static-image" src="https://www.youtube.com/embed/HapT0SKcyfY?showinfo=0" frameborder="0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <!--<iframe id="static-image" src="//www.youtube.com/embed/LuD3_umIxgw?controls=0&loop=1&autoplay=1&showinfo=0&modestbranding=1&disablekb=1&enablejsapi=1&playlist=LuD3_umIxgw" frameborder="0"></iframe>-->
+    </div>
+
 <div id="searchDiv" class="text-center row">
     <form id="searchForm" class="form-group" asp-page-handler="GetPosters" method="post">
         <input class="form-control" type="text" name="search" />
@@ -11,17 +16,42 @@
     </form>
 </div>
 
+@if (Model.searchTerm != null)
+{
+    <form method="post" asp-page-handler="GetPosters">
+        <input type="submit" name="movieID"
+               value="@Model.searchTerm" />
+    </form>
+}
+
 <div id="posters">
     <form method="post" asp-page-handler="Details">
-        @for(int i = 0; i < Model.posterURLs.Count; i++)
+        @for (int i = 0; i < Model.posterURLs.Count; i++)
         {
-            string path = "https://image.tmdb.org/t/p/w500" + 
+            string path = "https://image.tmdb.org/t/p/w500" +
                 Model.posterURLs[i];
-            <div class="thumbs" 
+            <div class="thumbs"
                  style="background: url(@path); background-size: 100%;">
-                <input type="submit" class="link" name="movieID" 
-                       value="@Model.ids[i]" />
+                <input type="submit" class="link" name="movieID"
+                       value="@Model.movieIDs[i]" />
             </div>
         }
     </form>
+</div>
+
+<div id="videos">
+    @if (Model.videoKeys.Count > 0)
+    {
+        @for (int i = 0; i < Model.MAX_VIDS; i++)
+        {
+            if (i < Model.videoKeys.Count) // case for less than 3 videos
+            {
+                <iframe class="youtubeVids" width="336" height="187"
+                src="https://www.youtube.com/embed/@Model.videoKeys[i]"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            }
+        }
+    }
 </div>

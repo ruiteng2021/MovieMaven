@@ -14,6 +14,7 @@ namespace MovieMaven
     public class Program
     {
         public static PosterSet posterSet;
+        public static VideoSet videoSet;
 
         public static void Main(string[] args)
         {
