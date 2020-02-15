@@ -42,7 +42,6 @@ D:\Web\C#Intro\MovieMaven\MovieMaven\bin\Debug\netcoreapp2.1\MovieMaven.dll
 D:\Web\C#Intro\MovieMaven\MovieMaven\bin\Debug\netcoreapp2.1\MovieMaven.pdb
 D:\Web\C#Intro\MovieMaven\MovieMaven\bin\Debug\netcoreapp2.1\MovieMaven.Views.dll
 D:\Web\C#Intro\MovieMaven\MovieMaven\bin\Debug\netcoreapp2.1\MovieMaven.Views.pdb
-D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.csprojAssemblyReference.cache
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.RazorAssemblyInfo.cache
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.RazorAssemblyInfo.cs
 D:\Web\C#Intro\MovieMaven\MovieMaven\obj\Debug\netcoreapp2.1\MovieMaven.AssemblyInfoInputs.cache

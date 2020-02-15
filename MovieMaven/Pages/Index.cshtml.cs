@@ -11,14 +11,28 @@ namespace MovieMaven.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
-        {
+        public List<string> posterURLs = new List<string>();
+        public List<string> overviews = new List<string>();
+        public List<string> ids = new List<string>();
+        public string movieID = "33";
 
-        }
+        public void OnGet()
+        { }
 
         public async Task OnPostGetPosters(string search)
         {
             await Fetch.GrabPosterAsync(search);
+            foreach(Poster poster in Program.posterSet.results)
+            {
+                posterURLs.Add(poster.poster_path);
+                overviews.Add(poster.overview);
+                ids.Add(poster.id.ToString());
+            }
+        }
+
+        public async Task OnPostDetails(string movieID)
+        {
+            await Fetch.GetMovieDetails(movieID);
         }
     }
 }

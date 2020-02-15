@@ -4,7 +4,24 @@
     ViewData["Title"] = "Home page";
 }
 
-<form asp-page-handler="GetPosters" method="post">
-    <input type="text" name="search" />
-    <input type="submit" value="Search" />
-</form>
+<div id="searchDiv" class="text-center row">
+    <form id="searchForm" class="form-group" asp-page-handler="GetPosters" method="post">
+        <input class="form-control" type="text" name="search" />
+        <input class="btn btn-primary" type="submit" value="Search" />
+    </form>
+</div>
+
+<div id="posters">
+    <form method="post" asp-page-handler="Details">
+        @for(int i = 0; i < Model.posterURLs.Count; i++)
+        {
+            string path = "https://image.tmdb.org/t/p/w500" + 
+                Model.posterURLs[i];
+            <div class="thumbs" 
+                 style="background: url(@path); background-size: 100%;">
+                <input type="submit" class="link" name="movieID" 
+                       value="@Model.ids[i]" />
+            </div>
+        }
+    </form>
+</div>

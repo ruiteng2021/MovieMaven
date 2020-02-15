@@ -7,11 +7,14 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using MovieMaven.Models;
 
 namespace MovieMaven
 {
     public class Program
     {
+        public static PosterSet posterSet;
+
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();

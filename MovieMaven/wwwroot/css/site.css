@@ -5,6 +5,31 @@ body {
     padding-bottom: 20px;
 }
 
+#searchDiv {
+    margin: 15px 0;
+}
+#searchForm > input[type='submit'] {
+    width: 100%;
+    margin-top: 2px;
+}
+.thumbs {
+    width: 250px;
+    min-height: 360px;
+    margin: 13px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    float: left;
+}
+.link {
+    width: 250px;
+    min-height: 360px;
+    opacity: .07;
+}
+
+footer {
+    display: block;
+    clear: both;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -12,26 +37,7 @@ body {
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
-}
-
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+    
 }
