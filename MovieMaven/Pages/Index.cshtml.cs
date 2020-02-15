@@ -12,6 +12,7 @@ namespace MovieMaven.Pages
     public class IndexModel : PageModel
     {
         public string searchTerm = Temp.searchTerm;
+        
         // poster data
         public List<string> posterURLs = new List<string>();
         public List<string> overviews = new List<string>();
@@ -21,6 +22,17 @@ namespace MovieMaven.Pages
         public List<string> videoNames = new List<string>();
         public List<string> videoKeys = new List<string>();
         public int MAX_VIDS = 3; // limits the vids that show
+
+        // movie details
+        public string movieOverview;
+        public int movieRuntime;
+        public string movieTagline;
+        public int movieRevenue;
+        public string movieReleaseDate;
+
+        // cast details
+        public List<string> castPics = new List<string>();
+
 
         public void OnGet()
         {
@@ -50,6 +62,17 @@ namespace MovieMaven.Pages
                 videoNames.Add(video.name);
                 videoKeys.Add(video.key);
             }
-        } // OnPostDetails()
+            movieOverview = Program.movie.overview;
+            movieRuntime = Program.movie.runtime;
+            movieTagline = Program.movie.tagline;
+            movieRevenue = Program.movie.revenue;
+            movieReleaseDate = Program.movie.release_date;
+
+            for(int i = 0; i < Program.credits.cast.Count; i++)
+            {
+                castPics.Add(Program.credits.cast[i].profile_path);
+            }
+
+    } // OnPostDetails()
     } // class
 } // namespace

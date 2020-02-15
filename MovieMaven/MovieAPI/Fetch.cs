@@ -13,6 +13,8 @@ namespace MovieMaven.MovieAPI
         public static string Data { get; set; }
         public static string Search { get; set; }
         public static string Videos { get; set; }
+        public static string Details { get; set; }
+        public static string Credits { get; set; }
 
 
         public static async Task GrabPosterAsync(string search)
@@ -37,29 +39,43 @@ namespace MovieMaven.MovieAPI
             }
         } // GrabPosterAsync()
 
-
         public static async Task GetMovieDetails(string movieID)
         {
             ClearYourHead();
 
             //===========================>>
             // Grabs Video details
-            HttpResponseMessage movieDetails =
+            HttpResponseMessage videoDetails =
                 await client.GetAsync(
                     "https://api.themoviedb.org/3/movie/" + movieID
                                       + "/videos?api_key=" + api_key + "&language=en-US");
 
-            if (movieDetails.IsSuccessStatusCode)
+            HttpResponseMessage movieDetails =
+            await client.GetAsync(
+                "https://api.themoviedb.org/3/movie/" + movieID 
+                    + "?api_key=" + api_key + "&language=en-US");
+
+            HttpResponseMessage castDetails =
+            await client.GetAsync(
+                "https://api.themoviedb.org/3/movie/" + movieID +
+                    "/credits?api_key=" + api_key);
+
+            if (videoDetails.IsSuccessStatusCode || 
+                movieDetails.IsSuccessStatusCode ||
+                castDetails.IsSuccessStatusCode)
             {
-                Videos = await movieDetails.Content.ReadAsStringAsync();
+                Videos = await videoDetails.Content.ReadAsStringAsync();
+                Details = await movieDetails.Content.ReadAsStringAsync();
+                Credits = await castDetails.Content.ReadAsStringAsync();
                 Program.videoSet = JsonConvert.DeserializeObject<VideoSet>(Videos);
+                Program.movie = JsonConvert.DeserializeObject<Movie>(Details);
+                Program.credits = JsonConvert.DeserializeObject<Credits>(Credits);
             }
             else
             {
                 Data = null;
             }
         }
-
         private static void ClearYourHead()
         {
             client.DefaultRequestHeaders.Accept.Clear();
