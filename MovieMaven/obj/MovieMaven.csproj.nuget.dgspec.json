@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Web\\C#Intro\\MovieMaven\\MovieMaven\\MovieMaven.csproj": {}
+    "C:\\Users\\alien\\source\\repos\\MovieMaven\\MovieMaven\\MovieMaven.csproj": {}
   },
   "projects": {
-    "D:\\Web\\C#Intro\\MovieMaven\\MovieMaven\\MovieMaven.csproj": {
+    "C:\\Users\\alien\\source\\repos\\MovieMaven\\MovieMaven\\MovieMaven.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Web\\C#Intro\\MovieMaven\\MovieMaven\\MovieMaven.csproj",
+        "projectUniqueName": "C:\\Users\\alien\\source\\repos\\MovieMaven\\MovieMaven\\MovieMaven.csproj",
         "projectName": "MovieMaven",
-        "projectPath": "D:\\Web\\C#Intro\\MovieMaven\\MovieMaven\\MovieMaven.csproj",
-        "packagesPath": "C:\\Users\\teng-laptop\\.nuget\\packages\\",
-        "outputPath": "D:\\Web\\C#Intro\\MovieMaven\\MovieMaven\\obj\\",
+        "projectPath": "C:\\Users\\alien\\source\\repos\\MovieMaven\\MovieMaven\\MovieMaven.csproj",
+        "packagesPath": "C:\\Users\\alien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alien\\source\\repos\\MovieMaven\\MovieMaven\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\teng-laptop\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
