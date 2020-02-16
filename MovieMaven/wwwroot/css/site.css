@@ -10,6 +10,27 @@ body {
     width: 100%;
     margin-top: 2px;
 }
+
+#searchDiv2 {
+    margin-left: 200px;
+    height: 20px;
+}
+
+#searchForm2 > input[type='text'] {
+    width: 20%;
+    height: 20px;
+    margin-top: 2px;
+    float: left;
+}
+#searchForm2 > input[type='submit'] {
+    margin: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    background: url(../images/icons8-search-100.png);
+}
+
 .thumbs {
     width: 250px;
     min-height: 360px;

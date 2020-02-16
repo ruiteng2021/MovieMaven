@@ -4,8 +4,21 @@
     ViewData["Title"] = "Home page";
 }
 
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" style="pointer-events:none"
+            src="https://youtube.com/embed/FhumjpeTU8Q?modestbranding=0&cc_load_policy=1&autoplay=1&mute=1&loop=1&playlist=0nbIdLz2Azo&controls=0&autohide=1&rel=0">
+    </iframe>
+</div>
+
+<div id="searchDiv2" class="text-center row">
+    <form id="searchForm2" class="form-group" asp-page-handler="GetPosters" method="post">
+        <input type="text" name="search" />
+        <input type="submit" value="" />
+    </form>
+</div>
+
 <div id="searchDiv" class="text-center row">
-    <form id="searchForm" class="form-group" asp-page-handler="GetPosters" 
+    <form id="searchForm" class="form-group" asp-page-handler="GetPosters"
           method="post">
         <input class="form-control" type="text" name="search" />
         <input class="btn btn-primary" type="submit" value="Search" />
@@ -41,9 +54,9 @@
         @for (int i = 0; i < Model.MAX_VIDS; i++)
         {
             <iframe class="youtubeVids" width="336" height="187"
-            src="https://www.youtube.com/embed/@Model.videoKeys[i]"
-            frameborder="0" allow="encrypted-media; picture-in-picture"
-            allowfullscreen></iframe>
+                    src="https://www.youtube.com/embed/@Model.videoKeys[i]"
+                    frameborder="0" allow="encrypted-media; picture-in-picture"
+                    allowfullscreen></iframe>
         }
     }
 </div>
@@ -63,8 +76,8 @@
     {
         @foreach (var pic in Model.castPics)
         {
-            <div class="castPic" 
-                 style="background: url(https://image.tmdb.org/t/p/w500/@pic); background-position: center; background-size: 100%;" ></div>
+            <div class="castPic"
+                 style="background: url(https://image.tmdb.org/t/p/w500/@pic); background-position: center; background-size: 100%;"></div>
         }
     }
 </div>
