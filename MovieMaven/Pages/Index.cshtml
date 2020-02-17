@@ -5,16 +5,15 @@
 }
 
 <div class="embed-responsive embed-responsive-16by9">
+    <div id="searchDiv2">
+        <form id="searchForm2" asp-page-handler="GetPosters" method="post">
+            <input type="text" name="search" />
+            <input type="submit" value="" />
+        </form>
+    </div>
     <iframe class="embed-responsive-item" style="pointer-events:none"
             src="https://youtube.com/embed/FhumjpeTU8Q?modestbranding=0&cc_load_policy=1&autoplay=1&mute=1&loop=1&playlist=0nbIdLz2Azo&controls=0&autohide=1&rel=0">
     </iframe>
-</div>
-
-<div id="searchDiv2" class="text-center row">
-    <form id="searchForm2" class="form-group" asp-page-handler="GetPosters" method="post">
-        <input type="text" name="search" />
-        <input type="submit" value="" />
-    </form>
 </div>
 
 <div id="searchDiv" class="text-center row">
