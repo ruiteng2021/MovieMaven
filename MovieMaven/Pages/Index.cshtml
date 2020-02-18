@@ -6,9 +6,9 @@
 
 <div class="embed-responsive embed-responsive-16by9">
     <div id="searchDiv2">
-        <form id="searchForm2" asp-page-handler="GetPosters" method="post">
+        <form id="searchForm2" class="form-group" asp-page-handler="GetPosters" method="post">
             <input type="text" name="search" />
-            <input type="submit" value="" />
+            <input type="submit" value="Search" />
         </form>
     </div>
     <iframe class="embed-responsive-item" style="pointer-events:none"
@@ -59,6 +59,31 @@
         }
     }
 </div>
+
+@if (Model.posterURLs.Count > 0)
+{
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active thumbs" 
+                 style="background: url(https://image.tmdb.org/t/p/w500/@Model.posterURLs[0]); background-position: center; background-size: 100%;">
+            </div>
+            <div class="carousel-item thumbs" 
+                 style="background: url(https://image.tmdb.org/t/p/w500/@Model.posterURLs[1]); background-position: center; background-size: 100%;">
+            </div>
+            <div class="carousel-item thumbs" 
+                 style="background: url(https://image.tmdb.org/t/p/w500/@Model.posterURLs[2]); background-position: center; background-size: 100%;">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+}
 
 <div id="movieDetails" style="padding: 25px;">
     @if (Model.movieRuntime > 0)
