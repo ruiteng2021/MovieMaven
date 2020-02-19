@@ -17,6 +17,7 @@ namespace MovieMaven
         public static VideoSet videoSet;
         public static Movie movie;
         public static Credits credits;
+        public static Actor actor;
 
         public static void Main(string[] args)
         {

@@ -15,6 +15,7 @@ namespace MovieMaven.MovieAPI
         public static string Videos { get; set; }
         public static string Details { get; set; }
         public static string Credits { get; set; }
+        public static string Actors { get; set; }
 
 
         public static async Task GrabPosterAsync(string search)
@@ -70,6 +71,27 @@ namespace MovieMaven.MovieAPI
                 Program.videoSet = JsonConvert.DeserializeObject<VideoSet>(Videos);
                 Program.movie = JsonConvert.DeserializeObject<Movie>(Details);
                 Program.credits = JsonConvert.DeserializeObject<Credits>(Credits);
+            }
+            else
+            {
+                Data = null;
+            }
+        }
+
+        public static async Task GetActorDetails(string id)
+        {
+            ClearYourHead();
+
+            //===========================>>
+            // Grab Actor Details
+            HttpResponseMessage actorData =
+                await client.GetAsync("https://api.themoviedb.org/3/person/" + id +
+                    "?api_key=" + api_key + "&language=en-US");
+
+            if (actorData.IsSuccessStatusCode)
+            {
+                Data = await actorData.Content.ReadAsStringAsync();
+                Program.actor = JsonConvert.DeserializeObject<Actor>(Data);
             }
             else
             {

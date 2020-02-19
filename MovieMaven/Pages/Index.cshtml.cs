@@ -32,6 +32,8 @@ namespace MovieMaven.Pages
 
         // cast details
         public List<string> castPics = new List<string>();
+        public List<int> actorIDs = new List<int>();
+        public List<string> castNames = new List<string>();
 
 
         public void OnGet()
@@ -71,8 +73,15 @@ namespace MovieMaven.Pages
             for(int i = 0; i < Program.credits.cast.Count; i++)
             {
                 castPics.Add(Program.credits.cast[i].profile_path);
+                actorIDs.Add(Program.credits.cast[i].id);
+                castNames.Add(Program.credits.cast[i].name);
             }
 
-    } // OnPostDetails()
+        } // OnPostDetails()
+
+        public void OnPostCastDetails(string actorID)
+        {
+            Response.Redirect("./Actor?id=" + actorID);
+        }
     } // class
 } // namespace
