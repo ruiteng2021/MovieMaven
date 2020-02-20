@@ -3,14 +3,15 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+<!-- // moved to _Layout.cshtml
 <div id="searchDiv" class="text-center row">
-    <form id="searchForm" class="form-group" asp-page-handler="GetPosters" 
+    <form id="searchForm" class="form-group" asp-page-handler="GetPosters"
           method="post">
         <input class="form-control" type="text" name="search" />
         <input class="btn btn-primary" type="submit" value="Search" />
     </form>
 </div>
+-->
 
 @if (Model.searchTerm != null)
 {
@@ -52,10 +53,14 @@
     {
         @for (int i = 0; i < Model.MAX_VIDS; i++)
         {
-            <iframe class="youtubeVids" width="336" height="187"
-            src="https://www.youtube.com/embed/@Model.videoKeys[i]"
-            frameborder="0" allow="encrypted-media; picture-in-picture"
-            allowfullscreen></iframe>
+            if (i < Model.videoKeys.Count)
+            { // for case that less than Model.MAX_VIDS
+                <iframe class="youtubeVids" width="336" height="187"
+                        src="https://www.youtube.com/embed/@Model.videoKeys[i]"
+                        frameborder="0" allow="encrypted-media; picture-in-picture"
+                        allowfullscreen></iframe>
+            }
+
         }
     }
 </div>
