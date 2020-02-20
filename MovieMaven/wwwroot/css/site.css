@@ -6,6 +6,13 @@ body {
 #searchDiv {
     margin: 15px 0;
 }
+
+#searchBar {
+    font-size: 17px;
+    cursor: pointer;
+    float: right;
+}
+
 #searchForm > input[type='submit'] {
     width: 100%;
     margin-top: 2px;

@@ -24,19 +24,25 @@
     <form method="post" asp-page-handler="Details">
         @for (int i = 0; i < Model.posterURLs.Count; i++)
         {
+            //string path = "https://image.tmdb.org/t/p/w500" +
+            //    Model.posterURLs[i];
             string path = "https://image.tmdb.org/t/p/w500" +
-            Model.posterURLs[i];
-            <div class="card pull-left">
-                <img src="@path" class="card-img-top thumbs" alt="...">
-                <div class="card-body">
-                    <p class="card-text" style="width: 250px; height: 200px; overflow-y: scroll;">
-                        @Model.overviews[i]
-                    </p>
+            @Program.posterSet.results[i].poster_path; // Model.posterURLs[i];
+            if (@Program.posterSet.results[i].poster_path != null)
+            {
+                <div class="card pull-left">
+                    <img src="@path" class="card-img-top thumbs" alt="..." style="min-height: 380px">
+                    <div class="card-body">
+                        <p class="card-text" style="width: 250px; height: 200px; overflow-y: scroll;">
+                            @Model.overviews[i]
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <button type="submit" name="movieID" class="btn btn-primary" value="@Model.movieIDs[i]">See more...</button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <button type="submit" name="movieID" class="btn btn-primary"  value="@Model.movieIDs[i]">See more...</button>
-                </div>
-            </div>
+            }
+
         }
     </form>
 </div>

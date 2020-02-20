@@ -8,11 +8,17 @@ namespace MovieMaven.Pages
 {
     public class AboutModel : PageModel
     {
+        public List<string> posterURLs = new List<string>();
+        public List<string> overviews = new List<string>();
         public string Message { get; set; }
 
         public void OnGet()
         {
             Message = "Your application description page.";
         }
+        public async Task OnPostDetails(string movieID)
+        {
+            int i = 33;
+        } // OnPostDetails()
     }
 }

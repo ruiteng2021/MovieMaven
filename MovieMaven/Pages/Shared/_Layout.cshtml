@@ -26,7 +26,18 @@
                     <li><a asp-page="/About">About</a></li>
                     <li><a asp-page="/Contact">Contact</a></li>
                 </ul>
+                <div id="searchBar">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </div>
             </div>
+           
         </div>
     </nav>
 
@@ -52,7 +63,7 @@
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 
     <script src="~/js/index.js"></script>
-    <script src="~/less/style.less"></script>
+    
 
     @RenderSection("Scripts", required: false)
 </body>
