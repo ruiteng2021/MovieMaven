@@ -31,13 +31,25 @@ body {
     opacity: 0;
 }
 
-.pull-left + .tooltip > .tooltip-inner {
+.tooltip {
     background-color: #FFFFFF;
     color: #333;
     border: 1px solid green;
-    padding: 15px;
+    border-radius: 10px;
     font-size: 10px;
+    font-style:italic;
     max-width: 200px;
+    position: fixed;
+    display:block;
+    opacity: 0;
+    visibility: hidden;
+    width: 250px;
+    height: auto;
+}
+
+.pull-left:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
 }
 
 #videos {

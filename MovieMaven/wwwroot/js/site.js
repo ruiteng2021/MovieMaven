@@ -2,6 +2,12 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
-$(document).ready(function () {
-    $('[data-toggle="tooltip"]').tooltip({ placement: "top", animated: "fade", html: true});
-});
+let text = document.getElementsByClassName('tooltip');
+window.onmousemove = function (e) {
+    let x = e.clientX,
+        y = e.clientY;
+    for (let i = 0; i < text.length; i++) {
+        text[i].style.top = (y + 20) + 'px';
+        text[i].style.left = (x + 20) + 'px';
+    }
+}
