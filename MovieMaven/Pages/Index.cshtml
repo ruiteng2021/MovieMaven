@@ -13,11 +13,24 @@
 </div>
 -->
 
-<div id="searchDiv">
-    <iframe style="pointer-events:none" frameborder="0" height="500px" width="100%"
-            src="https://youtube.com/embed/FhumjpeTU8Q?modestbranding=1&cc_load_policy=1&vq=large&autoplay=1&mute=1&loop=1&playlist=0nbIdLz2Azo&controls=0&autohide=1&rel=0">
-    </iframe>
-</div>
+@if ((Program.videoSet != null) && (Program.videoSet.results.Count != 0))
+{
+    <div id="searchDiv" class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" style="pointer-events:none" frameborder="0" height="500px" width="100%"
+                src="https://youtube.com/embed/@Program.videoSet.results[0].key?modestbranding=1&cc_load_policy=1&vq=large&autoplay=1&mute=1&loop=1&playlist=@Program.videoSet.results[0].key&controls=0&autohide=1&rel=0" allowfullscreen>
+        </iframe>
+    </div>    
+}
+else
+{
+    <div id="searchDiv" class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" style="pointer-events:none" frameborder="0" height="500px" width="100%"
+                src="https://youtube.com/embed/FhumjpeTU8Q?modestbranding=1&cc_load_policy=1&vq=large&autoplay=1&mute=1&loop=1&playlist=0nbIdLz2Azo&controls=0&autohide=1&rel=0" allowfullscreen>
+        </iframe>
+    </div>
+}
+
+
 
 @if (Model.searchTerm != null)
 {
@@ -29,28 +42,35 @@
 
 <div id="posters">
     <form method="post" asp-page-handler="Details">
-        @for (int i = 0; i < Model.posterURLs.Count; i++)
-        {
-            //string path = "https://image.tmdb.org/t/p/w500" +
-            //    Model.posterURLs[i];
-            string path = "https://image.tmdb.org/t/p/w500" +
-            @Program.posterSet.results[i].poster_path; // Model.posterURLs[i];
-            if (@Program.posterSet.results[i].poster_path != null)
-            {
-                <div class="card pull-left">
-                    <img src="@path" class="card-img-top thumbs" alt="..." style="min-height: 380px">
-                    <div class="card-body">
-                        <p class="card-text" style="width: 250px; height: 200px; overflow-y: scroll;">
-                            @Model.overviews[i]
-                        </p>
-                    </div>
-                    <div class="card-body">
-                        <button type="submit" name="movieID" class="btn btn-primary" value="@Model.movieIDs[i]">See more...</button>
-                    </div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12">
+                    @for (int i = 0; i < Model.posterURLs.Count; i++)
+                    {
+                        //string path = "https://image.tmdb.org/t/p/w500" +
+                        //    Model.posterURLs[i];
+                        string path = "https://image.tmdb.org/t/p/w500" +
+                        @Program.posterSet.results[i].poster_path; // Model.posterURLs[i];
+                        if (@Program.posterSet.results[i].poster_path != null)
+                        {
+                            <div class="col-sm-3" style="min-width:250px">
+                                <div class="card pull-left" data-toggle="tooltip" title="@Model.overviews[i]">
+                                    <img src="@path" class="card-img-top thumbs" alt="..." style="min-height: 380px">
+                                    <div class="card-body">
+                                        <p class="card-text" style="width: 250px; height: 200px; overflow-y: scroll;">
+                                            @Model.overviews[i]
+                                        </p>
+                                    </div>
+                                    <div class="card-body">
+                                        <button type="submit" name="movieID" class="btn btn-primary" value="@Model.movieIDs[i]">See more...</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
-            }
-
-        }
+            </div>
+        </div>
     </form>
 </div>
 
@@ -66,7 +86,6 @@
                         frameborder="0" allow="encrypted-media; picture-in-picture"
                         allowfullscreen></iframe>
             }
-
         }
     }
 </div>

@@ -31,6 +31,15 @@ body {
     opacity: 0;
 }
 
+.pull-left + .tooltip > .tooltip-inner {
+    background-color: #FFFFFF;
+    color: #333;
+    border: 1px solid green;
+    padding: 15px;
+    font-size: 10px;
+    max-width: 200px;
+}
+
 #videos {
     text-align: center;
 }
