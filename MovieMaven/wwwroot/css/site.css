@@ -31,6 +31,21 @@ body {
     box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
 }
 
+    .movieInfo::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .movieInfo::-webkit-scrollbar-thumb {
+        background: #e5e5e5;
+        border-radius: 6px;
+        box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
+    }
+
+    .movieInfo::-webkit-scrollbar-thumb:hover {
+        background: #999;
+    }
+
+
     .movieInfo:hover {
         box-shadow: -3px -3px 6px 0 rgba(113, 113, 113, 0.83), 6px 6px 8px 0 rgba(0, 0, 0, 1);
     }
@@ -56,6 +71,7 @@ body {
 .thumbs {
     width: 256px;
     min-height: 380px;
+    max-height: 380px;
     /*margin: 13px;*/
     border-radius: 6px;
     box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
