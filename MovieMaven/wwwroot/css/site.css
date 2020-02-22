@@ -17,14 +17,53 @@ body {
     width: 100%;
     margin-top: 2px;
 }
-.thumbs {
-    width: 250px;
-    min-height: 360px;
-    border: 1px solid #ddd;
-    margin: 2px;
-    border-radius: 4px;
-    float: left;
+#posters {
+    width: 100%;
+    /*
+    text-align: center;
+    padding-left: calc((100% - 846px) / 2);*/
 }
+.movieInfo {
+    width: 256px;
+    height: 200px;
+    overflow-y: scroll;
+    border-radius: 6px;
+    box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
+}
+
+    .movieInfo:hover {
+        box-shadow: -3px -3px 6px 0 rgba(113, 113, 113, 0.83), 6px 6px 8px 0 rgba(0, 0, 0, 1);
+    }
+
+.poster {
+    width: 252px;
+    min-height: 395px;
+    display: inline;
+    margin: 15px;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+    .poster > img {
+        width: 250px;
+        height: 360px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .poster > input[type="submit"] {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+.thumbs {
+    width: 256px;
+    min-height: 380px;
+    /*margin: 13px;*/
+    border-radius: 6px;
+    box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
+}
+    .thumbs:hover {
+        box-shadow: -3px -3px 6px 0 rgba(113, 113, 113, 0.83), 
+            6px 6px 8px 0 rgba(0, 0, 0, 1);
+    }
 .link {
     width: 250px;
     min-height: 360px;
@@ -37,14 +76,15 @@ body {
     border: 1px solid green;
     border-radius: 10px;
     font-size: 10px;
-    font-style:italic;
+    font-style: italic;
     max-width: 200px;
     position: fixed;
-    display:block;
+    display: block;
     opacity: 0;
     visibility: hidden;
     width: 250px;
     height: auto;
+    box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
 }
 
 .pull-left:hover .tooltip {
@@ -52,7 +92,7 @@ body {
     visibility: visible;
 }
 
-#videos {
+#videos #cast {
     text-align: center;
 }
 .youtubeVids {
@@ -86,6 +126,63 @@ body {
     border-radius: 50%;
     margin: 13px;
     float: left;
+    overflow: hidden;
+}
+.castButton {
+    margin-top: 200px;
+    min-width: 200px;
+    background: rgba(255,255,255,.77);
+    border: 1px solid #fff;
+}
+    .castButton:hover {
+        background: rgba(255,255,255,.99);
+        border: 1px solid rgba(255,0,0,.77);
+    }
+#actorStats {
+    width: 35%;
+    float: left;
+    height: 480px;
+    background: #444;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 30px 20px;
+    color: #fff;
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+}
+    #actorStats > h1 {
+        background: #111;
+        padding: 7px 0;
+        border-radius: 8px;
+        text-align: center;
+        margin-top: -5px;
+        border: 3px solid #555;
+        width: 100%;
+    }
+    #actorStats > h2, h3 {
+        padding-left: 7px;
+        color: #eee;
+    }
+#actorBio {
+    width: 65%;
+    float: left;
+    height: 480px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+#imageGallery, #relatedGallery {
+    clear: both;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.bio {
+    padding: 30px 40px;
+    color: #fff;
+    font-size: 1.7em;
+    font-family: 'Ubuntu', sans-serif;
 }
 footer {
     display: block;

@@ -2,4 +2,31 @@
 @model MovieMaven.Pages.ActorModel
 
 
-<p>@Model.biography</p>
+<div id="actorStats" style="background-image: url('../images/bkgCover.png'), url('https://image.tmdb.org/t/p/w500/@Model.imageUrls[0]');">
+    <h1>@Model.actorName</h1>
+    <h3>Born @Model.birthday - @Model.age years old.</h3>
+    <h3>@Model.placeOfBirth</h3>
+    <h3>Best known for: @Model.knownFor</h3>
+    @if (Model.homepage != null)
+    {
+        <h3>@Model.homepage</h3>
+    }
+</div>
+
+<div id="actorBio">
+    <p class="bio">@Model.biography</p>
+</div>
+
+<div id="imageGallery">
+    @for (int i = 0; i < Model.imageUrls.Count; i++)
+    {
+        <img class="thumbs" src="https://image.tmdb.org/t/p/w500/@Model.imageUrls[i]" alt="pic" />
+    }
+</div>
+
+<div id="relatedGallery">
+    @for (int i = 0; i < Model.movieImages.Count; i++)
+    {
+        <img class="thumbs" src="https://image.tmdb.org/t/p/w500/@Model.movieImages[i]" alt="pic" />
+    }
+</div>

@@ -42,7 +42,7 @@ else
 
 <div id="posters">
     <form method="post" asp-page-handler="Details">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     @for (int i = 0; i < Model.posterURLs.Count; i++)
@@ -53,12 +53,12 @@ else
                         @Program.posterSet.results[i].poster_path; // Model.posterURLs[i];
                         if (@Program.posterSet.results[i].poster_path != null)
                         {
-                            <div class="col-sm-3" style="min-width:250px">
+                            <div class="col-sm-3" style="min-width:256px; margin-top: 15px;">
                                 <div class="card pull-left">
-                                    <img src="@path" class="card-img-top thumbs" alt="..." style="min-height: 380px">
+                                    <img src="@path" class="card-img-top thumbs" alt="...">
                                     <p class="tooltip">@Model.overviews[i]</p>
                                     <div class="card-body">
-                                        <p class="card-text" style="width: 250px; height: 200px; overflow-y: scroll;">
+                                        <p class="card-text movieInfo">
                                             @Model.overviews[i]
                                         </p>
                                     </div>
@@ -109,7 +109,7 @@ else
             {
                 <div class="castPic"
                      style="background: url(https://image.tmdb.org/t/p/w500/@Model.castPics[i]); background-position: center; background-size: 100%;">
-                    <button type="submit" name="actorID" value="@Model.actorIDs[i]">
+                    <button class="castButton" type="submit" name="actorID" value="@Model.actorIDs[i]">
                         @Model.castNames[i]
                     </button>
                 </div>

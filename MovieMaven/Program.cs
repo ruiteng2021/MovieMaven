@@ -19,6 +19,9 @@ namespace MovieMaven
         public static Credits credits;
         public static Actor actor;
         public static string movieId;
+        public static ProfileSet profileSet;
+        public static RelatedSet relatedSet;
+
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();

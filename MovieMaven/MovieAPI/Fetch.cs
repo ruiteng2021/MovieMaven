@@ -8,6 +8,7 @@ namespace MovieMaven.MovieAPI
     public static class Fetch
     {
         public static HttpClient client = new HttpClient();
+        // This is my API_KEY please get your own :) thank-you!
         public static string api_key = "d194eb72915bc79fac2eb1a70a71ddd3";
         
         public static string Data { get; set; }
@@ -98,6 +99,48 @@ namespace MovieMaven.MovieAPI
                 Data = null;
             }
         }
+
+        public static async Task GetActorImages(string id)
+        {
+            ClearYourHead();
+
+            //===========================>>
+            // Grab Actor Details
+            HttpResponseMessage profileData =
+                await client.GetAsync("https://api.themoviedb.org/3/person/" + id 
+                    + "/images" + "?api_key=" + api_key + "&language=en-US");
+
+            if (profileData.IsSuccessStatusCode)
+            {
+                Data = await profileData.Content.ReadAsStringAsync();
+                Program.profileSet = JsonConvert.DeserializeObject<ProfileSet>(Data);
+            }
+            else
+            {
+                Data = null;
+            }
+        }
+
+        public static async Task GetRelatedMovies(string id)
+        {
+            ClearYourHead();
+
+            //===========================>>
+            // Grab Related Movies
+            HttpResponseMessage relatedData =
+                await client.GetAsync("https://api.themoviedb.org/3/discover/movie?with_cast=" + id + 
+                "&sort_by=revenue.desc&api_key=" + api_key + "&language=en-US");
+
+            if (relatedData.IsSuccessStatusCode)
+            {
+                Data = await relatedData.Content.ReadAsStringAsync();
+                Program.relatedSet = JsonConvert.DeserializeObject<RelatedSet>(Data);
+            }
+            else
+            {
+                Data = null;
+            }
+        }
         private static void ClearYourHead()
         {
             client.DefaultRequestHeaders.Accept.Clear();
@@ -105,5 +148,5 @@ namespace MovieMaven.MovieAPI
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(
                     "applicationException/json"));
         } // ClearYourHead()
-    }
-}
+    } // class
+} // namespace
