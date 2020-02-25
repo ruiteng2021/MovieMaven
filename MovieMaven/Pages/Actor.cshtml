@@ -1,32 +1,127 @@
 ﻿@page
 @model MovieMaven.Pages.ActorModel
 
+<div id="actorFrame">
+    <div id="actorStats" style="background-image: url('../images/bkgCover.png'), url('https://image.tmdb.org/t/p/w500/@Model.imageUrls[0]');"></div>
+    <div id="actorBio">
+        <h2>@Model.actorName</h2>
+        <h3>Biography</h3>
+        <p class="bio">@Model.biography</p>
+    </div>
+</div>
 
-<div id="actorStats" style="background-image: url('../images/bkgCover.png'), url('https://image.tmdb.org/t/p/w500/@Model.imageUrls[0]');">
-    <h1>@Model.actorName</h1>
-    <h3>Born @Model.birthday - @Model.age years old.</h3>
-    <h3>@Model.placeOfBirth</h3>
-    <h3>Best known for: @Model.knownFor</h3>
+<div id="actorsInfo">
+    <h3 style="margin-bottom: 20px; font-weight:bold">Personal Info</h3>
+    <h4>Known For: </h4>
+    <h5>@Model.knownFor</h5>
+    <h4>Gender:</h4>
+    @{
+        string gender = null;
+        if (@Program.actor.gender == 1)
+        {
+            gender = "Female";
+        }
+        else
+        {
+            gender = "Male";
+        }
+    }
+    <h5>@gender</h5>
+    <h4>Popularty: </h4>
+    <h5>@Program.actor.popularity</h5>
+    <h4>Birthday: </h4>
+    <h5>@Program.actor.birthday</h5>
+    <h4>Place of Birth:</h4>
+    <h5>@Program.actor.place_of_birth</h5>
+    <h4>Age:</h4>
+    <h5>@Model.age</h5>
     @if (Model.homepage != null)
     {
-        <h3>@Model.homepage</h3>
+        <h4>Official Site:</h4>
+        <h5>@Model.homepage</h5>
     }
-</div>
-
-<div id="actorBio">
-    <p class="bio">@Model.biography</p>
-</div>
-
-<div id="imageGallery">
-    @for (int i = 0; i < Model.imageUrls.Count; i++)
+    <h4>Also Know As:</h4>
+    @for (int i = 0; i < Program.actor.also_known_as.Count; i++)
     {
-        <img class="thumbs" src="https://image.tmdb.org/t/p/w500/@Model.imageUrls[i]" alt="pic" />
+        <h5 style="margin-bottom: 0;">@Program.actor.also_known_as[i]</h5>
     }
 </div>
 
-<div id="relatedGallery">
-    @for (int i = 0; i < Model.movieImages.Count; i++)
-    {
-        <img class="thumbs" src="https://image.tmdb.org/t/p/w500/@Model.movieImages[i]" alt="pic" />
-    }
+<div id="gallery">
+    <h3 style="margin: 20px 0 0 180px; font-weight:bold">Photo Gallery</h3>
+    <div id="imageGallery">
+        <div class="container-fluid">
+            <div class="row">
+                <div style="margin-right:0;" class="col-xs-11 col-md-10 col-centered">
+                    <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+                        <div class="carousel-inner">
+
+                            @for (int i = 0; i < Model.imageUrls.Count; i++)
+                            {
+                                string active = null;
+                                if (i == 0)
+                                {
+                                    active = "item active";
+                                }
+                                else
+                                {
+                                    active = "item";
+                                }
+                                <div class="@active">
+                                    <div class="card pull-left carousel-col">
+                                        <img class="img-singe card-img-top img-responsive" src="https://image.tmdb.org/t/p/w500/@Program.profileSet.profiles[i].file_path" alt="...">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <a class="left carousel-control" href="#carousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#carousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <h3 style="margin: 40px 0 0 180px; font-weight:bold">Profile Set</h3>
+    <div id="relatedGallery">
+        <div class="container-fluid">
+            <div class="row">
+                <div style="margin-right:0;" class="col-xs-11 col-md-10 col-centered">
+                    <div id="carousel2" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
+                        <div class="carousel-inner">
+
+                            @for (int i = 0; i < Model.movieImages.Count; i++)
+                            {
+                                string active = null;
+                                if (i == 0)
+                                {
+                                    active = "item active";
+                                }
+                                else
+                                {
+                                    active = "item";
+                                }
+                                <div class="@active">
+                                    <div class="card pull-left carousel-col">
+                                        <img class="img-singe card-img-top img-responsive" src="https://image.tmdb.org/t/p/w500/@Model.movieImages[i]" alt="...">
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <a class="left carousel-control" href="#carousel2" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#carousel2" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+

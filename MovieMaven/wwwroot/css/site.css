@@ -1,6 +1,8 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #e5e5e5;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #searchDiv {
@@ -155,10 +157,18 @@ body {
         background: rgba(255,255,255,.99);
         border: 1px solid rgba(255,0,0,.77);
     }
+
+#actorFrame {
+    margin-top: 20px;
+    width: 100%;
+    height: 450px;
+}
+
+
 #actorStats {
-    width: 35%;
+    width: 300px;
+    height: 450px;
     float: left;
-    height: 480px;
     background: #444;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -166,26 +176,49 @@ body {
     color: #fff;
     overflow: hidden;
     font-family: 'Ubuntu', sans-serif;
+    background-size: 100%; 
+    background-image: url('https://image.tmdb.org/t/p/w500/@Model.imageUrls[0]');
 }
-    #actorStats > h1 {
-        background: #111;
-        padding: 7px 0;
-        border-radius: 8px;
-        text-align: center;
-        margin-top: -5px;
-        border: 3px solid #555;
-        width: 100%;
-    }
-    #actorStats > h2, h3 {
-        padding-left: 7px;
-        color: #eee;
-    }
+
 #actorBio {
-    width: 65%;
-    float: left;
-    height: 480px;
+    width: calc(100% - 300px);
+    height: 450px;
     overflow: hidden;
     overflow-y: scroll;
+    float: left;
+}
+
+    #actorBio > h2 {
+        margin: 0;
+        padding: 30px 40px;
+        font-size: 2.4em;
+        line-height: 1.1em;
+        font-weight: 700;
+        display: inline-block;
+    }
+    #actorBio > h3 {
+        margin: 0;
+        padding: 0 40px;
+        font-weight: 600;
+        line-height: 1.3em;
+        font-size: 1.3em;
+    }
+
+
+#actorsInfo {
+    width: 15%;
+    height: 2000px;
+    float: left;
+    color: rgba(0, 0, 0, 0.83);
+}
+    #actorsInfo > h5 {
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+
+#gallery {
+    width: 85%;
+    float: left;
 }
 #imageGallery, #relatedGallery {
     clear: both;
@@ -195,12 +228,23 @@ body {
     text-align: center;
 }
 
-.bio {
-    padding: 30px 40px;
-    color: #fff;
-    font-size: 1.7em;
-    font-family: 'Ubuntu', sans-serif;
+.img-singe {
+    width: 150px;
+    height: 225px;
+    border-radius: 6px;
+    box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
 }
+
+    .img-singe:hover {
+        box-shadow: -3px -3px 6px 0 rgba(113, 113, 113, 0.83), 6px 6px 8px 0 rgba(0, 0, 0, 1);
+    }
+
+    .bio {
+        padding: 10px 40px;
+        color: rgba(0, 0, 0, 0.83);
+        font-size: 1.1em;
+        font-family: 'Ubuntu', sans-serif;
+    }
 footer {
     display: block;
     clear: both;
