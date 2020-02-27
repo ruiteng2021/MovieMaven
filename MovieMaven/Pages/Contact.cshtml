@@ -26,7 +26,6 @@
 
             <div id="carousel" class="carousel slide" data-ride="carousel" data-type="multi" data-interval="2500">
                 <div class="carousel-inner">
-
                     @for (int i = 0; i < @Program.profileSet.profiles.Count; i++)
                     {
                         string active = null;
@@ -43,7 +42,6 @@
                             <div class="@active">
                                 <div class="card pull-left carousel-col">
                                     <img src="https://image.tmdb.org/t/p/w500/@Program.profileSet.profiles[i].file_path" class="card-img-top thumbs img-responsive" alt="...">
-
                                 </div>
                             </div>
                         }

@@ -14,6 +14,7 @@ namespace MovieMaven
     public class Program
     {
         public static PosterSet posterSet;
+        public static PosterSet movieInTheatresSet; // used for movies in theatre video data 
         public static VideoSet videoSet;
         public static Movie movie;
         public static Credits credits;
@@ -21,6 +22,7 @@ namespace MovieMaven
         public static string movieId;
         public static ProfileSet profileSet;
         public static RelatedSet relatedSet;
+        public static string searchAgain;
 
         public static void Main(string[] args)
         {

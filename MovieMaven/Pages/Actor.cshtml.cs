@@ -20,6 +20,7 @@ namespace MovieMaven.Pages
         public string homepage;
         public List<string> imageUrls = new List<string>();
         public List<string> movieImages = new List<string>();
+        public bool backToHome = false;
 
         public async Task OnGet(string id)
         {
@@ -42,11 +43,24 @@ namespace MovieMaven.Pages
             actorName = Program.actor.name;
             birthday = Program.actor.birthday;
             // calculate age
-            age = DateTime.Now.Year - Convert.ToInt32(Program.actor.birthday.Substring(0, 4));
+            if (Program.actor.birthday != null) {
+                age = DateTime.Now.Year - Convert.ToInt32(Program.actor.birthday.Substring(0, 4));
+            }
             placeOfBirth = Program.actor.place_of_birth;
             knownFor = Program.actor.known_for_department;
             if(Program.actor.homepage != null)
                 homepage = Program.actor.homepage.ToString();
         }
+
+        public void OnPostGetPosters(string search)
+        {
+            Program.searchAgain = search;
+            Response.Redirect("./");
+            Temp.searchTerm = search;
+            backToHome = true;
+            //Response.Redirect("./?handler=GetPosters");
+            //Response.Redirect("./Index?search=" + search);
+            //Response.Redirect("Index.aspx?search=" + search);
+        } // OnPostGetPosters()
     }
 }

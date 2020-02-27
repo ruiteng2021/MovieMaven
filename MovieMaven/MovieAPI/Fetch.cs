@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MovieMaven.Models;
+using System;
 
 namespace MovieMaven.MovieAPI
 {
@@ -17,6 +18,7 @@ namespace MovieMaven.MovieAPI
         public static string Details { get; set; }
         public static string Credits { get; set; }
         public static string Actors { get; set; }
+        public static string MostPop { get; set; }
 
 
         public static async Task GrabPosterAsync(string search)
@@ -30,10 +32,23 @@ namespace MovieMaven.MovieAPI
                     "https://api.themoviedb.org/3/search/movie?api_key=" + 
                     api_key + "&query=" + search);
 
-            if(posterData.IsSuccessStatusCode)
+            //System.DateTime currentYear = new DateTime();
+            string CurrentYear = DateTime.Now.Year.ToString();
+            string currentDate = DateTime.Today.ToString("yyyy-MM-dd");
+            string lastmonth = DateTime.Today.AddMonths(-1).ToString("yyyy-MM-dd");
+            HttpResponseMessage mostPopularVedio =
+                await client.GetAsync(
+                    "https://api.themoviedb.org/3/discover/movie?api_key=" +
+                    api_key + "&primary_release_date.gte=" + lastmonth + "&primary_release_date.lte=" + currentDate);
+
+            if (posterData.IsSuccessStatusCode ||
+                mostPopularVedio.IsSuccessStatusCode)
             {
+                MostPop = await mostPopularVedio.Content.ReadAsStringAsync();
                 Data = await posterData.Content.ReadAsStringAsync();
                 Program.posterSet = JsonConvert.DeserializeObject<PosterSet>(Data);
+                // BestVote has excatly as same data structure as posterSet
+                Program.movieInTheatresSet = JsonConvert.DeserializeObject<PosterSet>(MostPop); 
             }
             else
             {

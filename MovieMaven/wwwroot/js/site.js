@@ -2,6 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your Javascript code.
+let searchText = document.getElementById("searchText");
+searchText.focus();
+
 let text = document.getElementsByClassName('tooltip');
 window.onmousemove = function (e) {
     let x = e.clientX,
@@ -19,7 +22,7 @@ $('.carousel[data-type="multi"] .item').each(function () {
         next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-
+    
     for (var i = 0; i < 4; i++) {
         next = next.next();
         if (!next.length) {

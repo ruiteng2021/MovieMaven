@@ -21,9 +21,6 @@ body {
 }
 #posters {
     width: 100%;
-    /*
-    text-align: center;
-    padding-left: calc((100% - 846px) / 2);*/
 }
 .movieInfo {
     width: 256px;
@@ -87,6 +84,13 @@ body {
     width: 250px;
     min-height: 360px;
     opacity: 0;
+}
+
+#imageButton {
+    width: 100%;
+    height: 380px;
+    border-radius: 6px;
+    border: 0;
 }
 
 .tooltip {
@@ -228,14 +232,14 @@ body {
     text-align: center;
 }
 
-.img-singe {
+.img-single {
     width: 150px;
     height: 225px;
     border-radius: 6px;
     box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
 }
 
-    .img-singe:hover {
+    .img-single:hover {
         box-shadow: -3px -3px 6px 0 rgba(113, 113, 113, 0.83), 6px 6px 8px 0 rgba(0, 0, 0, 1);
     }
 

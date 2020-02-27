@@ -22,6 +22,7 @@ namespace MovieMaven.Pages
         public List<string> videoNames = new List<string>();
         public List<string> videoKeys = new List<string>();
         public int MAX_VIDS = 3; // limits the vids that show
+        public int videoRandIndex;
 
         // movie details
         public string movieOverview;
@@ -35,10 +36,40 @@ namespace MovieMaven.Pages
         public List<int> actorIDs = new List<int>();
         public List<string> castNames = new List<string>();
 
+        // inital video 
+        public List<string> movieInTheatreURLs = new List<string>();
+        public List<string> movieInTheatreIDs = new List<string>();
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            
+            // Grab best voting movie by page start up
+            await Fetch.GrabPosterAsync("");
+            Random randNum = new Random();
+            for(int i = 0; i < 20; i++) {
+                videoRandIndex = randNum.Next(20);
+                await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[videoRandIndex].id.ToString());
+                if ((Program.videoSet.results.Count != 0)&&(Program.videoSet.results[0].key != null))
+                    break;                     
+            }
+
+            foreach (Poster poster in Program.movieInTheatresSet.results)
+            {
+                movieInTheatreURLs.Add(poster.poster_path);
+                movieInTheatreIDs.Add(poster.id.ToString());
+            }
+
+            if (Program.searchAgain != null)
+            {
+                movieInTheatreURLs.Clear();
+                await Fetch.GrabPosterAsync(Program.searchAgain);
+                foreach (Poster poster in Program.posterSet.results)
+                {
+                    posterURLs.Add(poster.poster_path);
+                    overviews.Add(poster.overview);
+                    movieIDs.Add(poster.id.ToString());
+                }
+            }
+
         }
 
         public async Task OnPostGetPosters(string search)
@@ -46,14 +77,17 @@ namespace MovieMaven.Pages
             if (Temp.searchTerm != null && search == null)
                 search = Temp.searchTerm;
 
-            await Fetch.GrabPosterAsync(search);
-            foreach(Poster poster in Program.posterSet.results)
-            {
-                posterURLs.Add(poster.poster_path);
-                overviews.Add(poster.overview);
-                movieIDs.Add(poster.id.ToString());
-            }
             Temp.searchTerm = search;
+            if (search != null) 
+            {
+                await Fetch.GrabPosterAsync(search);
+                foreach (Poster poster in Program.posterSet.results)
+                {
+                    posterURLs.Add(poster.poster_path);
+                    overviews.Add(poster.overview);
+                    movieIDs.Add(poster.id.ToString());
+                }
+            }
         } // OnPostGetPosters()
 
         public async Task OnPostDetails(string movieID)
@@ -82,6 +116,16 @@ namespace MovieMaven.Pages
         public void OnPostCastDetails(string actorID)
         {
             Response.Redirect("./Actor?id=" + actorID);
+        }
+
+        public async Task OnPostMoviesInTheatresDetails(string movieInTheatreID)
+        {
+            await Fetch.GetMovieDetails(movieInTheatreID);
+            foreach (Poster poster in Program.movieInTheatresSet.results)
+            {
+                movieInTheatreURLs.Add(poster.poster_path);
+                movieInTheatreIDs.Add(poster.id.ToString());
+            }
         }
     } // class
 } // namespace

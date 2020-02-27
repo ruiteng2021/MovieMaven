@@ -159,24 +159,3 @@
         display: block;
     }
 }
-
-.block {
-    width: 306px;
-    height: 230px;
-}
-
-.red {
-    background: red;
-}
-
-.blue {
-    background: blue;
-}
-
-.green {
-    background: green;
-}
-
-.yellow {
-    background: yellow;
-}
