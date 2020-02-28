@@ -15,10 +15,6 @@ body {
     float: right;
 }
 
-#searchForm > input[type='submit'] {
-    width: 100%;
-    margin-top: 2px;
-}
 #posters {
     width: 100%;
 }
@@ -233,8 +229,8 @@ body {
 }
 
 .img-single {
-    width: 150px;
-    height: 225px;
+    width: 180px;
+    height: 270px;
     border-radius: 6px;
     box-shadow: -2px -2px 7px 0 rgba(99, 99, 99, 0.55), 4px 4px 9px 0 rgba(0, 0, 0, 0.83);
 }

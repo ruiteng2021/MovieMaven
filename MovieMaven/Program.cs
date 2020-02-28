@@ -22,7 +22,6 @@ namespace MovieMaven
         public static string movieId;
         public static ProfileSet profileSet;
         public static RelatedSet relatedSet;
-        public static string searchAgain;
 
         public static void Main(string[] args)
         {

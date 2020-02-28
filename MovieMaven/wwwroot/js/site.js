@@ -15,15 +15,30 @@ window.onmousemove = function (e) {
     }
 }
 
-
-$('.carousel[data-type="multi"] .item').each(function () {
+$('.cars1[data-type="multi"] .item').each(function () {
     var next = $(this).next();
     if (!next.length) {
         next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-    
-    for (var i = 0; i < 4; i++) {
+
+    for (var i = 2; i < $('.cars1[data-type="multi"] .item').length; i++) {
+        next = next.next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+    }
+});
+
+$('.cars2[data-type="multi"] .item').each(function () {
+    var next = $(this).next();
+    if (!next.length) {
+        next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i = 2; i < $('.cars2[data-type="multi"] .item').length; i++) {
         next = next.next();
         if (!next.length) {
             next = $(this).siblings(':first');

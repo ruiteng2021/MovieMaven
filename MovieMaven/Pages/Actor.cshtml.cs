@@ -51,16 +51,5 @@ namespace MovieMaven.Pages
             if(Program.actor.homepage != null)
                 homepage = Program.actor.homepage.ToString();
         }
-
-        public void OnPostGetPosters(string search)
-        {
-            Program.searchAgain = search;
-            Response.Redirect("./");
-            Temp.searchTerm = search;
-            backToHome = true;
-            //Response.Redirect("./?handler=GetPosters");
-            //Response.Redirect("./Index?search=" + search);
-            //Response.Redirect("Index.aspx?search=" + search);
-        } // OnPostGetPosters()
     }
 }

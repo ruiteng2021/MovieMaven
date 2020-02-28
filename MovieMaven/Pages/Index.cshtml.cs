@@ -11,7 +11,7 @@ namespace MovieMaven.Pages
 {
     public class IndexModel : PageModel
     {
-        public string searchTerm = Temp.searchTerm;
+        //public string searchTerm = Temp.searchTerm;
         
         // poster data
         public List<string> posterURLs = new List<string>();
@@ -51,25 +51,15 @@ namespace MovieMaven.Pages
                 if ((Program.videoSet.results.Count != 0)&&(Program.videoSet.results[0].key != null))
                     break;                     
             }
-
-            foreach (Poster poster in Program.movieInTheatresSet.results)
+            for (int i = 0; i < Program.movieInTheatresSet.results.Count; i++)
             {
-                movieInTheatreURLs.Add(poster.poster_path);
-                movieInTheatreIDs.Add(poster.id.ToString());
-            }
-
-            if (Program.searchAgain != null)
-            {
-                movieInTheatreURLs.Clear();
-                await Fetch.GrabPosterAsync(Program.searchAgain);
-                foreach (Poster poster in Program.posterSet.results)
-                {
-                    posterURLs.Add(poster.poster_path);
-                    overviews.Add(poster.overview);
-                    movieIDs.Add(poster.id.ToString());
+                await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[i].id.ToString());
+                if (Program.videoSet.results.Count != 0)
+                {   // remove poster without video to play
+                    movieInTheatreURLs.Add(Program.movieInTheatresSet.results[i].poster_path);
+                    movieInTheatreIDs.Add(Program.movieInTheatresSet.results[i].id.ToString());
                 }
             }
-
         }
 
         public async Task OnPostGetPosters(string search)
@@ -120,12 +110,16 @@ namespace MovieMaven.Pages
 
         public async Task OnPostMoviesInTheatresDetails(string movieInTheatreID)
         {
-            await Fetch.GetMovieDetails(movieInTheatreID);
-            foreach (Poster poster in Program.movieInTheatresSet.results)
+            for (int i = 0; i < Program.movieInTheatresSet.results.Count; i++)
             {
-                movieInTheatreURLs.Add(poster.poster_path);
-                movieInTheatreIDs.Add(poster.id.ToString());
+                await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[i].id.ToString());
+                if (Program.videoSet.results.Count != 0)
+                {   // remove poster without video to play
+                    movieInTheatreURLs.Add(Program.movieInTheatresSet.results[i].poster_path);
+                    movieInTheatreIDs.Add(Program.movieInTheatresSet.results[i].id.ToString());
+                }
             }
+            await Fetch.GetMovieDetails(movieInTheatreID);
         }
     } // class
 } // namespace

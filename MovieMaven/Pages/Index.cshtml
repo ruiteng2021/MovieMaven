@@ -24,7 +24,7 @@
 else
 {
     <div id="searchDiv" class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" style="pointer-events:none" frameborder="0" 
+        <iframe class="embed-responsive-item" style="pointer-events:none" frameborder="0"
                 src="https://youtube.com/embed/szby7ZHLnkA?modestbranding=1&cc_load_policy=1&vq=large&autoplay=1&mute=1&loop=1&playlist=szby7ZHLnkA&controls=0&autohide=1&rel=0" allowfullscreen>
         </iframe>
     </div>
@@ -43,37 +43,37 @@ else
                                 <div class="card pull-left">
                                     <div class="card-img-top thumbs" style="float: left;">
                                         <button id="imageButton" class="card-img-top thumbs" style="background: url(https://image.tmdb.org/t/p/w500/@Model.movieInTheatreURLs[i]); background-size: 100%;" type="submit" name="movieInTheatreID" value="@Model.movieInTheatreIDs[i]">
-                                        @{ string adult = "";
-                                            if (Program.movieInTheatresSet.results[i].adult == "false")
-                                            { adult = "no"; }
-                                            else { adult = "yes"; }
-                                        }
-                                        <table class="tooltip">
-                                            <tr>
-                                                <td>Title</td>
-                                                <td>:&nbsp;@Program.movieInTheatresSet.results[i].title</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Language</td>
-                                                <td>:&nbsp;@Program.movieInTheatresSet.results[i].original_language</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Release date</td>
-                                                <td>:&nbsp;@Program.movieInTheatresSet.results[i].release_date</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Adult</td>
-                                                <td>:&nbsp;@adult</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vote average</td>
-                                                <td>:&nbsp;@Program.movieInTheatresSet.results[i].vote_average</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Popularity</td>
-                                                <td>:&nbsp;@Program.movieInTheatresSet.results[i].popularity</td>
-                                            </tr>
-                                        </table>
+                                            @{ string adult = "";
+                                                if (Program.movieInTheatresSet.results[i].adult == "false")
+                                                { adult = "no"; }
+                                                else { adult = "yes"; }
+                                            }
+                                            <table class="tooltip">
+                                                <tr>
+                                                    <td>Title</td>
+                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].title</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Language</td>
+                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].original_language</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Release date</td>
+                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].release_date</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Adult</td>
+                                                    <td>:&nbsp;@adult</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Vote average</td>
+                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].vote_average</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Popularity</td>
+                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].popularity</td>
+                                                </tr>
+                                            </table>
                                         </button>
                                     </div>
                                 </div>
@@ -86,14 +86,15 @@ else
     </form>
 </div>
 
-
-@if (Model.searchTerm != null)
-{
-    <form method="post" asp-page-handler="GetPosters">
-        <input type="submit" name="movieID"
-               value="@Model.searchTerm" />
-    </form>
-}
+@*
+    @if (Model.searchTerm != null)
+    {
+        <form method="post" asp-page-handler="GetPosters">
+            <input type="submit" name="movieID"
+                    value="@Model.searchTerm" />
+        </form>
+    }
+*@
 
 <div id="posters">
     <form method="post" asp-page-handler="Details">
@@ -110,38 +111,38 @@ else
                         {
                             <div class="col-sm-3" style="min-width:266px; margin-top: 15px;">
                                 <div class="card pull-left">
-                                    <img src="@path" class="card-img-top thumbs" alt="...">                                
-                                        @{ string adult = "";
-                                            if (Program.posterSet.results[i].adult == "false")
-                                            { adult = "no"; }
-                                            else { adult = "yes"; }
-                                        }
-                                        <table class="tooltip">
-                                            <tr>
-                                                <td>Title</td>
-                                                <td>:&nbsp;@Program.posterSet.results[i].title</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Language</td>
-                                                <td>:&nbsp;@Program.posterSet.results[i].original_language</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Release date</td>
-                                                <td>:&nbsp;@Program.posterSet.results[i].release_date</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Adult</td>
-                                                <td>:&nbsp;@adult</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Vote average</td>
-                                                <td>:&nbsp;@Program.posterSet.results[i].vote_average</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Popularity</td>
-                                                <td>:&nbsp;@Program.posterSet.results[i].popularity</td>
-                                            </tr>
-                                        </table>                                                                  
+                                    <img src="@path" class="card-img-top thumbs" alt="...">
+                                    @{ string adult = "";
+                                        if (Program.posterSet.results[i].adult == "false")
+                                        { adult = "no"; }
+                                        else { adult = "yes"; }
+                                    }
+                                    <table class="tooltip">
+                                        <tr>
+                                            <td>Title</td>
+                                            <td>:&nbsp;@Program.posterSet.results[i].title</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Language</td>
+                                            <td>:&nbsp;@Program.posterSet.results[i].original_language</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Release date</td>
+                                            <td>:&nbsp;@Program.posterSet.results[i].release_date</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Adult</td>
+                                            <td>:&nbsp;@adult</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vote average</td>
+                                            <td>:&nbsp;@Program.posterSet.results[i].vote_average</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Popularity</td>
+                                            <td>:&nbsp;@Program.posterSet.results[i].popularity</td>
+                                        </tr>
+                                    </table>
                                     <div class="card-body">
                                         <p class="card-text movieInfo">
                                             @Model.overviews[i]
@@ -179,7 +180,7 @@ else
                 if (@Model.castPics[i] != null)
                 {
                     <div class="castPic"
-                         style="background: url(https://image.tmdb.org/t/p/w500/@Model.castPics[i]); background-position: center; background-size: 100%;">
+                            style="background: url(https://image.tmdb.org/t/p/w500/@Model.castPics[i]); background-position: center; background-size: 100%;">
                         <button class="castButton" type="submit" name="actorID" value="@Model.actorIDs[i]">
                             @Model.castNames[i]
                         </button>
