@@ -10,8 +10,10 @@ namespace MovieMaven.MovieAPI
     {
         public static HttpClient client = new HttpClient();
         // This is my API_KEY please get your own :) thank-you!
-        public static string api_key = "d194eb72915bc79fac2eb1a70a71ddd3";
-        
+        //public static string api_key = "d194eb72915bc79fac2eb1a70a71ddd3";
+        // This is my own API_KEY, your are willcome!
+        public static string api_key = "60918711ab06f46cb045b0ee80dcebd9";
+
         public static string Data { get; set; }
         public static string Search { get; set; }
         public static string Videos { get; set; }
@@ -35,11 +37,14 @@ namespace MovieMaven.MovieAPI
             //System.DateTime currentYear = new DateTime();
             string CurrentYear = DateTime.Now.Year.ToString();
             string currentDate = DateTime.Today.ToString("yyyy-MM-dd");
-            string lastmonth = DateTime.Today.AddMonths(-1).ToString("yyyy-MM-dd");
+            string lastmonth = DateTime.Today.AddMonths(-2).ToString("yyyy-MM-dd");
             HttpResponseMessage mostPopularVedio =
                 await client.GetAsync(
                     "https://api.themoviedb.org/3/discover/movie?api_key=" +
-                    api_key + "&primary_release_date.gte=" + lastmonth + "&primary_release_date.lte=" + currentDate);
+                    api_key + "&primary_release_date.gte=" + 
+                    lastmonth + "&primary_release_date.lte=" + currentDate +
+                    "&sort_by = popularity.desc");
+            //+ "&sort_by=release_date.desc");
 
             if (posterData.IsSuccessStatusCode ||
                 mostPopularVedio.IsSuccessStatusCode)

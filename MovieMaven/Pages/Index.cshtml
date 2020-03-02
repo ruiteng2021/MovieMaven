@@ -44,22 +44,22 @@ else
                                     <div class="card-img-top thumbs" style="float: left;">
                                         <button id="imageButton" class="card-img-top thumbs" style="background: url(https://image.tmdb.org/t/p/w500/@Model.movieInTheatreURLs[i]); background-size: 100%;" type="submit" name="movieInTheatreID" value="@Model.movieInTheatreIDs[i]">
                                             @{ string adult = "";
-                                                if (Program.movieInTheatresSet.results[i].adult == "false")
+                                                if (Model.movieInTheatrePosters[i].adult == "false")
                                                 { adult = "no"; }
                                                 else { adult = "yes"; }
                                             }
                                             <table class="tooltip">
                                                 <tr>
                                                     <td>Title</td>
-                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].title</td>
+                                                    <td>:&nbsp;@Model.movieInTheatrePosters[i].title</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Language</td>
-                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].original_language</td>
+                                                    <td>:&nbsp;@Model.movieInTheatrePosters[i].original_language</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Release date</td>
-                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].release_date</td>
+                                                    <td>:&nbsp;@Model.movieInTheatrePosters[i].release_date</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Adult</td>
@@ -67,11 +67,11 @@ else
                                                 </tr>
                                                 <tr>
                                                     <td>Vote average</td>
-                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].vote_average</td>
+                                                    <td>:&nbsp;@Model.movieInTheatrePosters[i].vote_average</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Popularity</td>
-                                                    <td>:&nbsp;@Program.movieInTheatresSet.results[i].popularity</td>
+                                                    <td>:&nbsp;@Model.movieInTheatrePosters[i].popularity</td>
                                                 </tr>
                                             </table>
                                         </button>

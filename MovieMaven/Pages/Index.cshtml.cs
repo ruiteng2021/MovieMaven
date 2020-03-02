@@ -39,6 +39,7 @@ namespace MovieMaven.Pages
         // inital video 
         public List<string> movieInTheatreURLs = new List<string>();
         public List<string> movieInTheatreIDs = new List<string>();
+        public List<Poster> movieInTheatrePosters = new List<Poster>();
 
         public async Task OnGet()
         {
@@ -56,6 +57,7 @@ namespace MovieMaven.Pages
                 await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[i].id.ToString());
                 if (Program.videoSet.results.Count != 0)
                 {   // remove poster without video to play
+                    movieInTheatrePosters.Add(Program.movieInTheatresSet.results[i]);
                     movieInTheatreURLs.Add(Program.movieInTheatresSet.results[i].poster_path);
                     movieInTheatreIDs.Add(Program.movieInTheatresSet.results[i].id.ToString());
                 }
@@ -115,6 +117,7 @@ namespace MovieMaven.Pages
                 await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[i].id.ToString());
                 if (Program.videoSet.results.Count != 0)
                 {   // remove poster without video to play
+                    movieInTheatrePosters.Add(Program.movieInTheatresSet.results[i]);
                     movieInTheatreURLs.Add(Program.movieInTheatresSet.results[i].poster_path);
                     movieInTheatreIDs.Add(Program.movieInTheatresSet.results[i].id.ToString());
                 }
