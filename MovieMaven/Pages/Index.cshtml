@@ -21,7 +21,12 @@ else
     </div>
 }
 
+
 <div id="posters">
+    @if (Model.movieInTheatreURLs.Count != 0)
+    {
+        <h3>Popular Movies now playing</h3>
+    }
     <form method="post" asp-page-handler="MoviesInTheatresDetails">
         <div class="container-fluid">
             <div class="row">
@@ -166,12 +171,13 @@ else
     <form method="post" asp-page-handler="CastDetails">
         @if (Model.castPics.Count > 0)
         {
+            <h2>Full Cast & Crew</h2>
             @for (int i = 0; i < Model.castPics.Count; i++)
             {
                 if (@Model.castPics[i] != null)
                 {
                     <div class="castPic"
-                            style="background: url(https://image.tmdb.org/t/p/w500/@Model.castPics[i]); background-position: center; background-size: 100%;">
+                         style="background: url(https://image.tmdb.org/t/p/w500/@Model.castPics[i]); background-position: center; background-size: 100%;">
                         <button class="castButton" type="submit" name="actorID" value="@Model.actorIDs[i]">
                             @Model.castNames[i]
                         </button>

@@ -46,12 +46,7 @@ namespace MovieMaven.Pages
             // Grab best voting movie by page start up
             await Fetch.GrabPosterAsync("");
             Random randNum = new Random();
-            for(int i = 0; i < 20; i++) {
-                videoRandIndex = randNum.Next(20);
-                await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[videoRandIndex].id.ToString());
-                if ((Program.videoSet.results.Count != 0)&&(Program.videoSet.results[0].key != null))
-                    break;                     
-            }
+
             for (int i = 0; i < Program.movieInTheatresSet.results.Count; i++)
             {
                 await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[i].id.ToString());
@@ -61,6 +56,13 @@ namespace MovieMaven.Pages
                     movieInTheatreURLs.Add(Program.movieInTheatresSet.results[i].poster_path);
                     movieInTheatreIDs.Add(Program.movieInTheatresSet.results[i].id.ToString());
                 }
+            }
+            for (int i = 0; i < 20; i++)
+            {
+                videoRandIndex = randNum.Next(20);
+                await Fetch.GetMovieDetails(Program.movieInTheatresSet.results[videoRandIndex].id.ToString());
+                if ((Program.videoSet.results.Count != 0) && (Program.videoSet.results[0].key != null))
+                    break;
             }
         }
 

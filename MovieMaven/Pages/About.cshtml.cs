@@ -16,9 +16,6 @@ namespace MovieMaven.Pages
         {
             Message = "Your application description page.";
         }
-        public async Task OnPostDetails(string movieID)
-        {
-            int i = 33;
-        } // OnPostDetails()
+
     }
 }

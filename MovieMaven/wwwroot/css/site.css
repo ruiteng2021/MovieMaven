@@ -17,6 +17,7 @@ body {
 
 #posters {
     width: 100%;
+    text-align:center;
 }
 .movieInfo {
     width: 256px;
@@ -273,6 +274,13 @@ footer {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+    background-color: #e5e5e5;
+    /*background: #e5e5e5;*/
 }
 
 /* Hide/rearrange for smaller screens */
